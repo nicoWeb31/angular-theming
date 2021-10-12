@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 // @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-@use "~@angular/material/_theming" as mat;
+@use "~@angular/material/theming" as mat;
+
+//custom component
+@use "./app/banner/banner.component.scss-theme.scss" as banner;
+
 @use "sass:map";
 
 @include mat.mat-core();
@@ -89,14 +93,15 @@ $app-theme: mat.mat-light-theme(
 );
 
 $app-theme: map.deep-merge(
-    $app-theme,
-    (
+  $app-theme,
+  (
+    success: $app-success,
+    err: $app-error,
+    color: (
       success: $app-success,
       err: $app-error,
-      color: (
-        success: $app-success,
-        err: $app-error,
-      ),
-    )
-  );
-  @include mat.angular-material-theme($app-theme);
+    ),
+  )
+);
+@include mat.angular-material-theme($app-theme);
+@include banner.app-banner-theme($app-theme);

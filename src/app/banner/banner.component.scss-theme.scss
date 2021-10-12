@@ -1,0 +1,10 @@
+@use "~@angular/material/theming" as mat;
+@mixin app-banner-theme($theme) {
+  $theme-color: mat.mat-get-color-config($theme);
+  $success-color: map-get($theme-color, success);
+  $bg-color: mat.mat-color($success-color, lighter);
+
+  app-banner {
+    background-color: $bg-color;
+  }
+}
