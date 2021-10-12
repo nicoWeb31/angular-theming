@@ -1,3 +1,102 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+// @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@use "~@angular/material/_theming" as mat;
+@use "sass:map";
 
+@include mat.mat-core();
+
+$primary: (
+  50: #e8eaf6,
+  100: #c5cbe9,
+  200: #9fa8da,
+  300: #7985cb,
+  400: #5c6bc0,
+  500: #3f51b5,
+  600: #394aae,
+  700: #3140a5,
+  800: #29379d,
+  900: #1b278d,
+  A100: #c6cbff,
+  A200: #939dff,
+  A400: #606eff,
+  A700: #4757ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$app-err-full: (
+  50: #fbe7e7,
+  100: #f4c3c3,
+  200: #ed9c9c,
+  300: #e67474,
+  400: #e05656,
+  500: #db3838,
+  600: #d73232,
+  700: #d22b2b,
+  800: #cd2424,
+  900: #c41717,
+  A100: #fff6f6,
+  A200: #ffc3c3,
+  A400: #ff9090,
+  A700: #ff7777,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$app-primary: mat.mat-palette($primary, 300, 100);
+$app-accent: mat.mat-palette(mat.$mat-pink);
+$app-warn: mat.mat-palette(mat.$mat-red);
+$app-success: mat.mat-palette(mat.$mat-green);
+$app-error: mat.mat-palette($app-err-full);
+
+$app-theme: mat.mat-light-theme(
+  (
+    color: (
+      primary: $app-primary,
+      accent: $app-accent,
+      warn: $app-warn,
+    ),
+  )
+);
+
+$app-theme: map.deep-merge(
+    $app-theme,
+    (
+      success: $app-success,
+      err: $app-error,
+      color: (
+        success: $app-success,
+        err: $app-error,
+      ),
+    )
+  );
+  @include mat.angular-material-theme($app-theme);
