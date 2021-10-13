@@ -1,13 +1,31 @@
 @use "~@angular/material/theming" as mat;
+
+@mixin app-banner-typo($typo-conf) {
+  app-banner {
+    .heading {
+      @include mat.mat-typography-level-to-styles($typo-conf, title);
+      // line-height:  mat.mat-line-height($typo-conf,title);
+    }
+  }
+  .message {
+    @include mat.mat-typography-level-to-styles($typo-conf, body-1);
+    // line-height:  mat.mat-line-height($typo-conf,title);
+  }
+}
+
 @mixin app-banner-theme($theme) {
   $theme-color: mat.mat-get-color-config($theme);
+  $typo: mat.mat-get-typography-config($theme);
+
   $success-color-palette: map-get($theme-color, success);
   $err-color-palette: map-get($theme-color, err);
   $info-color-palette: map-get($theme-color, info);
   $bg-theme: map-get($theme-color, background);
 
+  @include app-banner-typo($typo);
+
   app-banner {
-    background-color: mat.mat-color($bg-theme,card);
+    background-color: mat.mat-color($bg-theme, card);
     &.app-banner-success {
       background-color: mat.mat-color($success-color-palette, lighter);
     }

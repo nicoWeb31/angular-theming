@@ -4,10 +4,12 @@
 
 //custom component
 @use "./app/banner/banner.component.scss-theme.scss" as banner;
+@use "./app/app.component.scss.theme.scss" as root;
 
 @use "sass:map";
+
 $app-mat-typo: mat.mat-typography-config(
-  $font-family: "'Open Sans', sans-serif",
+  $font-family: "'Festive', cursive",
   $display-4:
     mat.mat-typography-level(
       95px,
@@ -18,7 +20,7 @@ $app-mat-typo: mat.mat-typography-config(
     ),
 );
 
-@include mat.mat-core($app-mat-typo);
+@include mat.mat-core();
 
 $primary: (
   50: #e8eaf6,
@@ -94,13 +96,14 @@ $app-success: mat.mat-palette(mat.$mat-green);
 $app-error: mat.mat-palette($app-err-full);
 $app-info: mat.mat-palette(mat.$mat-blue);
 
-$app-theme: mat.mat-light-theme(
+$app-theme: mat.mat-dark-theme(
   (
     color: (
       primary: $app-primary,
       accent: $app-accent,
       warn: $app-warn,
     ),
+    typography: $app-mat-typo,
   )
 );
 
@@ -119,3 +122,4 @@ $app-theme: map.deep-merge(
 );
 @include mat.angular-material-theme($app-theme);
 @include banner.app-banner-theme($app-theme);
+@include root.app-root-theme($app-theme);
