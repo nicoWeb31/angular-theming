@@ -1,0 +1,72 @@
+@use "~@angular/material/theming" as mat;
+@use "sass:map";
+
+
+$app-mat-typo: mat.mat-typography-config(
+  $font-family: "'Festive', cursive",
+  $display-4:
+    mat.mat-typography-level(
+      95px,
+      95px,
+      300,
+      "Roboto",
+      $letter-spacing: -0.05em
+    ),
+);
+
+
+
+/* For use in src/lib/core/theming/_palette.scss */
+$app-err-full: (
+  50: #fbe7e7,
+  100: #f4c3c3,
+  200: #ed9c9c,
+  300: #e67474,
+  400: #e05656,
+  500: #db3838,
+  600: #d73232,
+  700: #d22b2b,
+  800: #cd2424,
+  900: #c41717,
+  A100: #fff6f6,
+  A200: #ffc3c3,
+  A400: #ff9090,
+  A700: #ff7777,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$app-success: mat.mat-palette(mat.$mat-green);
+$app-error: mat.mat-palette($app-err-full);
+$app-info: mat.mat-palette(mat.$mat-blue);
+
+
+@function apply-extra-colors($theme){
+  @return map.deep-merge(
+    $theme,
+    (
+      success: $app-success,
+      err: $app-error,
+      info: $app-info,
+      color: (
+        success: $app-success,
+        err: $app-error,
+        info: $app-info,
+      ),
+    )
+  );
+}
