@@ -6,8 +6,19 @@
 @use "./app/banner/banner.component.scss-theme.scss" as banner;
 
 @use "sass:map";
+$app-mat-typo: mat.mat-typography-config(
+  $font-family: "'Open Sans', sans-serif",
+  $display-4:
+    mat.mat-typography-level(
+      95px,
+      95px,
+      300,
+      "Roboto",
+      $letter-spacing: -0.05em
+    ),
+);
 
-@include mat.mat-core();
+@include mat.mat-core($app-mat-typo);
 
 $primary: (
   50: #e8eaf6,
@@ -83,7 +94,6 @@ $app-success: mat.mat-palette(mat.$mat-green);
 $app-error: mat.mat-palette($app-err-full);
 $app-info: mat.mat-palette(mat.$mat-blue);
 
-
 $app-theme: mat.mat-light-theme(
   (
     color: (
@@ -99,11 +109,11 @@ $app-theme: map.deep-merge(
   (
     success: $app-success,
     err: $app-error,
-    info : $app-info,
+    info: $app-info,
     color: (
       success: $app-success,
       err: $app-error,
-      info : $app-info
+      info: $app-info,
     ),
   )
 );
