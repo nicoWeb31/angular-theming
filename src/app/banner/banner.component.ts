@@ -6,8 +6,16 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
   styleUrls: ['./banner.component.scss'],
 })
 export class BannerComponent implements OnInit {
-  
   @Input() message: string = '';
+  @Input() type: 'success' | 'info' | 'err' | 'none' = 'none';
+
+  @HostBinding('class')
+  get hostClass() {
+    if (this.type !== 'none') {
+      return `app-banner-${this.type}`;
+    }
+    return;
+  }
 
   constructor() {}
 

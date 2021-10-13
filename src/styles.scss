@@ -81,6 +81,8 @@ $app-accent: mat.mat-palette(mat.$mat-pink);
 $app-warn: mat.mat-palette(mat.$mat-red);
 $app-success: mat.mat-palette(mat.$mat-green);
 $app-error: mat.mat-palette($app-err-full);
+$app-info: mat.mat-palette(mat.$mat-blue);
+
 
 $app-theme: mat.mat-light-theme(
   (
@@ -97,9 +99,11 @@ $app-theme: map.deep-merge(
   (
     success: $app-success,
     err: $app-error,
+    info : $app-info,
     color: (
       success: $app-success,
       err: $app-error,
+      info : $app-info
     ),
   )
 );
