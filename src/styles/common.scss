@@ -1,13 +1,13 @@
-@use "~@angular/material/theming" as mat ;
+@use "~@angular/material" as mat;
 //custom component
 @use "../app/banner/banner.component.scss-theme.scss" as banner;
 @use "../app/app.component.scss.theme.scss" as root;
 @use "sass:map";
 
-$app-mat-typo: mat.mat-typography-config(
+$app-mat-typo: mat.define-typography-config(
   $font-family: "'Festive', cursive",
   $display-4:
-    mat.mat-typography-level(
+    mat.define-typography-level(
       95px,
       95px,
       300,
@@ -50,17 +50,14 @@ $app-err-full: (
   ),
 );
 
-$app-success: mat.mat-palette(mat.$mat-green);
-$app-error: mat.mat-palette($app-err-full);
-$app-info: mat.mat-palette(mat.$mat-blue);
+$app-success: mat.define-palette(mat.$green-palette);
+$app-error: mat.define-palette($app-err-full);
+$app-info: mat.define-palette(mat.$blue-palette);
 
 @function apply-extra-colors($theme) {
   @return map.deep-merge(
     $theme,
     (
-      success: $app-success,
-      err: $app-error,
-      info: $app-info,
       color: (
         success: $app-success,
         err: $app-error,
@@ -72,12 +69,15 @@ $app-info: mat.mat-palette(mat.$mat-blue);
 
 @mixin createTheme($app-theme) {
   // @include mat.angular-material-theme($app-theme);
-  @include mat.mat-core-theme($app-theme);
-  @include mat.mat-select-theme($app-theme);
-  @include mat.mat-toolbar-theme($app-theme);
-  @include mat.mat-button-theme($app-theme);
-  @include mat.mat-card-theme($app-theme);
-  @include mat.mat-form-field-theme($app-theme);
+  @include mat.core-theme($app-theme);
+  @include mat.select-theme($app-theme);
+  @include mat.toolbar-theme($app-theme);
+  @include mat.button-theme($app-theme);
+  @include mat.card-theme($app-theme);
+  @include mat.form-field-theme($app-theme);
+  body {
+    @include mat.strong-focus-indicators-theme($app-theme);
+  }
 
   @include banner.app-banner-theme($app-theme);
   @include root.app-root-theme($app-theme);

@@ -1,4 +1,7 @@
-@use "~@angular/material/theming" as mat;
+@use "~@angular/material" as mat;
+@use "~@angular/material/core/density/private/compatibility" as comp;
+@use "sass:map";
+
 
 $mat-toolbar-banner-density-config: (
   height: (
@@ -9,8 +12,8 @@ $mat-toolbar-banner-density-config: (
 );
 
 @mixin app-banner-density($conf) {
-  $density-scale: mat.mat-get-density-config($conf);
-  $height: mat.mat-private-density-prop-value(
+  $density-scale: mat.get-density-config($conf);
+  $height: comp.private-density-prop-value(
     $mat-toolbar-banner-density-config,
     $density-scale,
     height
@@ -24,25 +27,27 @@ $mat-toolbar-banner-density-config: (
 @mixin app-banner-typo($typo-conf) {
   app-banner {
     .heading {
-      @include mat.mat-typography-level-to-styles($typo-conf, title);
+      @include mat.typography-level($typo-conf, title);
       // line-height:  mat.mat-line-height($typo-conf,title);
     }
   }
   .message {
-    @include mat.mat-typography-level-to-styles($typo-conf, body-1);
+    @include mat.typography-level($typo-conf, body-1);
     // line-height:  mat.mat-line-height($typo-conf,title);
   }
 }
 
 @mixin app-banner-theme($theme) {
-  $theme-color: mat.mat-get-color-config($theme);
-  $typo: mat.mat-get-typography-config($theme);
-  $density: mat.mat-get-density-config($theme);
+  $theme-color: mat.get-color-config($theme);
+  $typo: mat.get-typography-config($theme);
+  $density: mat.get-density-config($theme);
 
-  $success-color-palette: map-get($theme-color, success);
-  $err-color-palette: map-get($theme-color, err);
-  $info-color-palette: map-get($theme-color, info);
-  $bg-theme: map-get($theme-color, background);
+  $success-color-palette: map.get($theme-color, success);
+  $err-color-palette: map.get($theme-color, err);
+  $info-color-palette: map.get($theme-color, info);
+  $bg-theme: map.get($theme-color, background);
+  $fg-theme: map.get($theme-color, foreground);
+
 
   @if $density != null {
     @include app-banner-density($density);
@@ -53,16 +58,16 @@ $mat-toolbar-banner-density-config: (
   }
 
   app-banner {
-    // @include mat.mat-elevation(3);
-    background-color: mat.mat-color($bg-theme, card);
+    @include mat.overridable-elevation(2,mat.get-color-from-palette($fg-theme, elevation));
+    background-color: mat.get-color-from-palette($bg-theme, card);
     &.app-banner-success {
-      background-color: mat.mat-color($success-color-palette, lighter);
+      background-color: mat.get-color-from-palette($success-color-palette, lighter);
     }
     &.app-banner-err {
-      background-color: mat.mat-color($err-color-palette, lighter);
+      background-color: mat.get-color-from-palette($err-color-palette, lighter);
     }
     &.app-banner-info {
-      background-color: mat.mat-color($info-color-palette, lighter);
+      background-color: mat.get-color-from-palette($info-color-palette, lighter);
     }
   }
 }

@@ -1,4 +1,4 @@
-@use "~@angular/material/theming" as mat;
+// @use "~@angular/material/theming" as mat;
 
 
 .card-area {
@@ -7,5 +7,5 @@
 
 .content {
   box-sizing: border-box;
-  min-height: calc(100vh - #{mat.$mat-toolbar-height-desktop});
+  // min-height: calc(100vh - #{mat.$mat-toolbar-height-desktop});
 }

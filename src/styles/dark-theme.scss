@@ -1,4 +1,4 @@
-@use "~@angular/material/theming" as mat;
+@use "~@angular/material" as mat;
 @use "./common.scss" as common;
 
 $primary: (
@@ -34,11 +34,11 @@ $primary: (
   ),
 );
 
-$app-primary: mat.mat-palette($primary, 300, 100);
-$app-accent: mat.mat-palette(mat.$mat-pink);
-$app-warn: mat.mat-palette(mat.$mat-red);
+$app-primary: mat.define-palette($primary, 300, 100);
+$app-accent: mat.define-palette(mat.$pink-palette);
+$app-warn: mat.define-palette(mat.$red-palette);
 
-$app-theme: mat.mat-dark-theme(
+$app-theme: mat.define-dark-theme(
   (
     color: (
       primary: $app-primary,
