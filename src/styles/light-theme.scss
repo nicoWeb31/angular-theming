@@ -46,6 +46,7 @@ $app-theme: mat.mat-light-theme(
       warn: $app-warn,
     ),
     typography: common.$app-mat-typo,
+    density: minimum,
   )
 );
 

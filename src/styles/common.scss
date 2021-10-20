@@ -4,7 +4,6 @@
 @use "../app/app.component.scss.theme.scss" as root;
 @use "sass:map";
 
-
 $app-mat-typo: mat.mat-typography-config(
   $font-family: "'Festive', cursive",
   $display-4:
@@ -16,8 +15,6 @@ $app-mat-typo: mat.mat-typography-config(
       $letter-spacing: -0.05em
     ),
 );
-
-
 
 /* For use in src/lib/core/theming/_palette.scss */
 $app-err-full: (
@@ -57,8 +54,7 @@ $app-success: mat.mat-palette(mat.$mat-green);
 $app-error: mat.mat-palette($app-err-full);
 $app-info: mat.mat-palette(mat.$mat-blue);
 
-
-@function apply-extra-colors($theme){
+@function apply-extra-colors($theme) {
   @return map.deep-merge(
     $theme,
     (
@@ -74,12 +70,15 @@ $app-info: mat.mat-palette(mat.$mat-blue);
   );
 }
 
-
 @mixin createTheme($app-theme) {
-  @include mat.angular-material-theme($app-theme);
+  // @include mat.angular-material-theme($app-theme);
+  @include mat.mat-core-theme($app-theme);
+  @include mat.mat-select-theme($app-theme);
+  @include mat.mat-toolbar-theme($app-theme);
+  @include mat.mat-button-theme($app-theme);
+  @include mat.mat-card-theme($app-theme);
+  @include mat.mat-form-field-theme($app-theme);
+
   @include banner.app-banner-theme($app-theme);
   @include root.app-root-theme($app-theme);
 }
-
-
-

@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 // @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @use "~@angular/material/theming" as mat;
+@use "./styles/common.scss" as common;
 
 //custom component
 // @use "./app/banner/banner.component.scss-theme.scss" as banner;
@@ -9,5 +10,10 @@
 // @use "./styles/ligth-theme.scss" as light;
 
 @include mat.mat-core();
+@include mat.mat-ripple();
+@include mat.cdk-a11y();
+@include mat.cdk-overlay();
+@include mat.cdk-text-field();
 
-
+@include mat.mat-private-strong-focus-indicators-positioning();
+@include mat.mat-base-typography(common.$app-mat-typo,"body");

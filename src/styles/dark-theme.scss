@@ -46,9 +46,9 @@ $app-theme: mat.mat-dark-theme(
       warn: $app-warn,
     ),
     typography: common.$app-mat-typo,
+    density: minimum,
   )
 );
-
 
 $app-theme: common.apply-extra-colors($app-theme);
 

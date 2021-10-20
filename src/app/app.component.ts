@@ -13,6 +13,7 @@ import {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  readonly themeAchor = this.document.getElementById('app-theme');
   title = 'angular-theming';
   text = 'ma banniere ';
   // @HostBinding('class')
@@ -24,20 +25,22 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.rendered.removeClass(this.document.body, 'light-theme');
-    this.rendered.addClass(this.document.body, 'dark-theme');
+    // this.rendered.removeClass(this.document.body, 'light-theme');
+    // this.rendered.addClass(this.document.body, 'dark-theme');
   }
 
   chooseTheme(e: string) {
     if (e === 'dark') {
       // this.currentTheme = 'dark-theme';
-      this.rendered.removeClass(this.document.body, 'light-theme');
-      this.rendered.addClass(this.document.body, 'dark-theme');
+      // this.rendered.removeClass(this.document.body, 'light-theme');
+      // this.rendered.addClass(this.document.body, 'dark-theme');
+      this.rendered.setAttribute(this.themeAchor, 'href', '/dark-theme.css');
     }
     if (e === 'light') {
       // this.currentTheme = 'light-theme';
-      this.rendered.removeClass(this.document.body, 'dark-theme');
-      this.rendered.addClass(this.document.body, 'light-theme');
+      // this.rendered.removeClass(this.document.body, 'dark-theme');
+      // this.rendered.addClass(this.document.body, 'light-theme');
+      this.rendered.setAttribute(this.themeAchor, 'href', '/light-theme.css');
     }
     // console.log(this.currentTheme);
   }
