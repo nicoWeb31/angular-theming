@@ -49,18 +49,8 @@ $app-theme: mat.mat-dark-theme(
   )
 );
 
-// $app-theme: map.deep-merge(
-//   $app-theme,
-//   (
-//     success: $app-success,
-//     err: $app-error,
-//     info: $app-info,
-//     color: (
-//       success: $app-success,
-//       err: $app-error,
-//       info: $app-info,
-//     ),
-//   )
-// );
 
 $app-theme: common.apply-extra-colors($app-theme);
+
+//generate theme
+@include common.createTheme($app-theme);

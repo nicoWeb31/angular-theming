@@ -51,3 +51,6 @@ $app-theme: mat.mat-light-theme(
 
 
 $app-theme: common.apply-extra-colors($app-theme);
+
+//generate theme
+@include common.createTheme($app-theme);

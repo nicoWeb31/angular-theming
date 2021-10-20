@@ -1,4 +1,7 @@
 @use "~@angular/material/theming" as mat;
+//custom component
+@use "../app/banner/banner.component.scss-theme.scss" as banner;
+@use "../app/app.component.scss.theme.scss" as root;
 @use "sass:map";
 
 
@@ -70,3 +73,13 @@ $app-info: mat.mat-palette(mat.$mat-blue);
     )
   );
 }
+
+
+@mixin createTheme($app-theme) {
+  @include mat.angular-material-theme($app-theme);
+  @include banner.app-banner-theme($app-theme);
+  @include root.app-root-theme($app-theme);
+}
+
+
+
