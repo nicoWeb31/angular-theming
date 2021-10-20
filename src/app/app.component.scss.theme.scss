@@ -4,9 +4,7 @@
   $theme-color: mat.mat-get-color-config($theme);
   $bg: map-get($theme-color, background);
 
-  app-root {
-    .content {
-      background-color: mat.mat-color($bg, background);
-    }
+  .content {
+    background-color: mat.mat-color($bg, background);
   }
 }

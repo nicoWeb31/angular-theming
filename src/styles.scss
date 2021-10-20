@@ -6,10 +6,22 @@
 @use "./app/banner/banner.component.scss-theme.scss" as banner;
 @use "./app/app.component.scss.theme.scss" as root;
 @use "./assets/styles/dark-theme.scss" as dark;
-@use "./assets/styles/ligth-theme.scss" as dark;
+@use "./assets/styles/ligth-theme.scss" as light;
 
-  @include mat.mat-core();
+@include mat.mat-core();
 
-@include mat.angular-material-theme($app-theme);
-@include banner.app-banner-theme($app-theme);
-@include root.app-root-theme($app-theme);
+@mixin createTheme($app-theme) {
+  @include mat.angular-material-theme($app-theme);
+  @include banner.app-banner-theme($app-theme);
+  @include root.app-root-theme($app-theme);
+}
+
+
+.dark-theme{
+  @include createTheme(dark.$app-theme)
+}
+
+
+.light-theme{
+  @include createTheme(light.$app-theme)
+}
