@@ -1,4 +1,4 @@
-@use "~@angular/material/theming" as mat;
+@use "~@angular/material/theming" as mat ;
 @use "./common.scss" as common;
 
 $primary: (
@@ -46,7 +46,7 @@ $app-theme: mat.mat-light-theme(
       warn: $app-warn,
     ),
     typography: common.$app-mat-typo,
-    density: minimum,
+    density: default,
   )
 );
 

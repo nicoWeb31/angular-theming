@@ -53,6 +53,7 @@ $mat-toolbar-banner-density-config: (
   }
 
   app-banner {
+    // @include mat.mat-elevation(3);
     background-color: mat.mat-color($bg-theme, card);
     &.app-banner-success {
       background-color: mat.mat-color($success-color-palette, lighter);
